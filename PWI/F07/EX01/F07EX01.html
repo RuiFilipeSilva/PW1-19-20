@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MyTravel</title>
+    <script src="../../vue.js"></script>
+</head>
+<style>
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+        th, td {
+          padding: 5px;
+          text-align: left;
+        }
+        </style>
+<body>
+<div id="intro">
+    <h2>MyTravels</h2>
+    <form v-on:submit.prevent="addTravel()">
+        <label for="country">País:</label>
+        <input type="text" id=country v-model="country">
+        <br> <br>
+        <label for="sltcontinent">Continente:</label>
+        <select id="sltcontinent" v-model="continent">
+            <option value="Europa">Europa</option>
+            <option value="Ásia">Ásia</option>
+            <option value="América do Norte">América do Norte</option>
+            <option value="América do Sul">América do Sul</option>
+            <option value="África">África</option>
+            <option value="Oceânia">Oceânia</option>
+        </select>
+        <br> <br>
+        <label for="cities">Cidade:</label>
+        <input type="text" id=cities v-model="cities">
+        <br> <br>
+        <label for="txtDescription">Descrição:</label>
+        <br>
+        <textarea id="txtDescription" cols="30" rows="10" v-model="description"></textarea>
+        <br><br>
+        <label for="dtInicial">Data de Partida:</label>
+        <input id="dtInicial" type="date" v-model="dtInicial">
+        <br><br>
+        <label for="dtFinal">Data de Chegada:</label>
+        <input id="dtFinal" type="date" v-model="dtFinal">
+        <br> <br>
+        Tipo de Férias:
+        <br>
+        <label for="vacation">Férias</label>
+        <input type="radio" id="rdVacation" value="vacation" v-model="type">
+        <label for="business">Negócios</label>
+        <input type="radio" id="rdBusiness" value="business" v-model="type">
+        <br> <br>
+        <label for="imgLink">Link da Imagem</label>
+        <input type="url" v-model="photo">
+        <br> <br>
+        <input type="submit" value="ADICIONAR">
+        <button>ENCONTRAR VIAGEM</button>
+    </form>
+    
+    <hr>
+    <span v-if="travels.length === 0 ">SEM VIAGENS  </span>
+    <div v-else>
+            <label for="txtFilterContinent">Continente:</label>
+            <input id="txtFilterContinent" type="text" v-model.lazy="filterContinent">
+            <label for="filterDtInicial">Data de Partida:</label>
+            <input id="filterDtInicial" type="date" v-model.lazy="filterDtInicial">
+            <label for="filterDtFinal">Data de Chegada:</label>
+            <input id="filterDtFinal" type="date" v-model.lazy="filterDtFinal">
+            <button v-on:click="orderByCountry()">Ordenar por País</button>
+            <br> <br>
+            <table>
+                    <tr>
+                        <th>#</th>
+                        <th>PAÍS</th>
+                        <th>CONTINENTE</th>
+                        <th>DATA DE PARTIDA</th>
+                        <th>DATA DE CHEGADA</th>
+                        <th>TIPO DE FÉRIAS</th>
+                    </tr>
+                    <tr v-for="travel in filteredTravels">
+                        <td>{{travel.id}}</td>
+                        <td>{{travel.country}}</td>
+                        <td>{{travel.continent}}</td>
+                        <td>{{travel.dtInicial}}</td>
+                        <td>{{travel.dtFinal}}</td>
+                        <td>{{travel.type}}</td>
+                        <td> 
+                                <button @click="editTravel(travel.id)">Editar</button>
+                                <button @click="removeTravel(travel.id)">Apagar</button>
+                            </td>
+                    </tr>
+    </table>
+</div>
+
+</div>
+
+    <script src="./F07EX01.js"></script>
+</body>
+</html>

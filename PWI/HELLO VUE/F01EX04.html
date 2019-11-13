@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>F01EX04</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="intro">
+        <h2>Peso {{weigth}} kgs</h2>
+    </div>
+</body>
+<script>
+const vm = new Vue({
+    el:"#intro",
+    data:{
+        weigth:70,
+    },
+    beforeCreate: function(){
+        console.log("beforeCreated")
+    },
+    created:function(){
+        console.log("created")
+    },
+    beforeMount: function(){
+        console.log("beforeMount")
+    },
+    mounted: function(){
+        console.log("mount")
+    },
+    beforeUpdate:function(){
+        console.log("beforeUpdated")
+    },
+    updated:function(){
+        console.log("updated")
+    },
+    beforeDestroy:function(){
+        console("beforeDestroyed")
+    },
+    destroyed:function(){
+        console.log("destroyed")
+    }
+})
+</script>
+</html>

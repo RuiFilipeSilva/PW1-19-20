@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>F08EX01</title>
+    <script src="../../vue.js"></script>
+</head>
+<body>
+    <div id="intro">
+        <form v-on:submit.prevent="addCastle()">
+            <h3>ADICIONAR CASTELO</h3>
+            <label for="txtName">Nome do Castelo:</label>
+            <input type="text" id="txtName" required v-model="name">
+            <br>
+            <label for="linkPhoto">Imagem do castelo:</label>
+            <input type="url" required v-model="photo">
+            <input type="submit" value="Adicionar">
+        </form>
+        <hr>
+        <table>
+            <label for="txtCastel">Nome:</label>
+            <input type="text" id="txtCastel" v:model.lazy="filterName">
+            <button @click="orderByName()">A-Z</button>
+                <tr>
+                    <th>#</th>
+                    <th>NOME</th>
+                    <th>OPÇÕES</th>
+                </tr>
+                <tr v-for="castel in filteredCastels">
+                    <td>{{castel.id}}</td>
+                    <td>{{castel.name}}</td>
+                    <td> 
+                        <button @click="image(castel.id)">Ver Mais</button>
+                        <button @click="changeCastel(castel.id)">Editar</button>    
+                        <button @click="removeCastel(castel.id)">Remover</button> 
+                    </td>
+                </tr>
+</table>
+<!--Modal-->
+<dialog id="dlgReport">
+</dialog>
+
+    </div>
+    <script src="./F08EX01.js"></script>
+</body>
+</html>

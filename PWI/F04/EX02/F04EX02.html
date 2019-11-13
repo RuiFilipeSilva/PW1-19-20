@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>F04EX02</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="intro">
+        <h2> {{schools.length}} ESCOLAS DO IPP</h2>
+        <ul v-if="schools.length === 0"> <p>SEM ESCOLAS</p></ul>
+        <ul v-else>
+        <li v-for="school in filterSchools2">
+            {{school}}
+        </li>
+        </ul>
+        <input id=addSchool type="text">
+        <button @click=addSchool()>Adicionar</button>
+        <button @click=filterSchool("E")>E</button>
+    </div>
+    
+    <script src="./F04EX02.js"></script>
+</body>
+</html>

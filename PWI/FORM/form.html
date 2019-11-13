@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formulário</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="intro">
+        <form v-on:submit.prevent="getReport()">
+        <label for="txtName">NOME:</label>
+        <input id="txtName" v-model="name">
+        <label for="txtAge">IDADE:</label> 
+        <input id="txtAge" v-model.number="age">
+        <p>GÉNERO:</p>
+        <input type="radio" id="generFem" value="Feminino" v-model="gener" >
+        <label for="generFem">FEMININO</label>
+        <input type="radio" id="generMas" value="Masculino" v-model="gener">
+        <label for="generMas">MASCULINO</label>
+        <p>LICENCIATURA</p> 
+        <select v-model="licenciatura">
+            <option value="">Sem Licenciatura</option>
+            <option value="informatica">Informática</option>
+            <option value="redes">Redes</option>
+            <option value="web">Web</option>
+        </select>
+        <p>LINGUAGENS:</p>
+        <input type="checkbox" id="c" value="C#" v-model="checkedLanguages">
+        <label for="c">C#</label>
+        <input type="checkbox" id="js" value="Java Script" v-model="checkedLanguages">
+        <label for="js">Java Script</label>
+        <input type="checkbox" id="phyton" value="Phython" v-model="checkedLanguages">
+        <label for="phyton">Phyton</label>
+        <input type="checkbox" id="java" value="Java" v-model="checkedLanguages">
+        <label for="java">Java</label>
+        <input type="checkbox" id="c++" value="C++" v-model="checkedLanguages">
+        <label for="c++">C++</label>
+        <p>MOTIVAÇÃO:</p>
+        <textarea name="motivation" id="motivation" v-model="motivation" cols="30" rows="10"></textarea>
+        <!--MODAL-->
+        <input type="submit" value="SUBMETER">    
+    </form>
+    <dialog id="dlgReport"></dialog>
+    </div>
+    
+    <script src="./form.js"></script>
+</body>
+</html>

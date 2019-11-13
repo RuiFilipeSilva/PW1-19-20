@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>F04EX03</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+</style>
+<body>
+    <div id="intro">
+        <ul>
+            <li v-for="team in filterTeams">
+                Name:{{team.name}} and Year:{{team.year}}, Location:{{team.location}}
+            </li>
+        </ul>
+        <br>
+        <table>
+        <tr>
+            <th>#</th>
+            <th>NAME</th>
+            <th>YEAR</th>
+            <th>LOCATION</th>
+        </tr>
+        <tr v-for="(team, index) in filterTeams">
+            <td>{{index + 1}}</td>
+            <td>{{team.name}}</td>
+            <td>{{team.year}}</td>
+            <td>{{team.location}}</td>
+        </tr>
+        </table>
+        <br>
+        <button @click=addTeam("Braga",1923,"Braga")>Adicionar</button>
+        <button @click=filterTeam("Lisboa")>Lisboa</button>
+    </div>
+    
+    <script src="./F04EX03.js"></script>
+</body>
+</html>

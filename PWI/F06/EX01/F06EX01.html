@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>F06</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<style>
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+        th, td {
+          padding: 5px;
+          text-align: left;
+        }
+        </style>
+<body>
+    <div id="intro">
+        <h1>MyToDo</h1>
+        <form v-on:submit.prevent="addTask()">
+            <label for="txtTask">Task:</label>
+            <input id="txtTask" type="text" v-model="name">
+            <br>
+
+            <!-- TASK TYPE -->
+            <input type="radio" id ="rdPersonal" value = "pessoal" v-model="type">
+            <label for="rdPersonal">Pessoal</label>
+            <input type="radio" id ="rdProfessional" value = "professional" v-model="type">
+            <label for="rdProfessioanl">Professional</label>
+            <br>
+
+            <!-- ADICONAR TAREFA -->
+            <input type="submit" value="ADICIONAR TAREFA">
+        </form>
+        <br>
+        <span v-if="tasks.length==0">SEM TAREFAS</span>
+        <div v-else>
+            <span>
+                <label for="sltFilter">FILTRO:</label>
+                <select id="sltFilter" v-model="filter">
+                    <option value="todos">TODOS</option>
+                    <option value="pessoal">PESSOAL</option>
+                    <option value="professional">PROFISSIONAL</option>
+                </select>
+            </span>
+        <!-- ADICIONAR TABELA-->
+        <table>
+                <tr>
+                    <th>TASK</th>
+                    <th>TYPE</th>
+                </tr>
+                <tr v-for="(task, index) in filterTypes">
+                    <td>{{task.name}}</td>
+                    <td>{{task.type}}</td>
+                    <td> 
+                        <button @click="removeTask(task.id)">Apagar</button>
+                    </td>
+                </tr>
+        </table>
+    </div>
+        
+    </div>
+    
+    <script src="./F06EX01.js"></script>
+</body>
+</html>
